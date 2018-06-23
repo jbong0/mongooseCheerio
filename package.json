@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/jbong0/mongooseCheerio/issues"
   },
-  "homepage": "https://github.com/jbong0/mongooseCheerio#readme"
+  "homepage": "https://github.com/jbong0/mongooseCheerio#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.1.6",
+    "request": "^2.87.0"
+  }
 }
