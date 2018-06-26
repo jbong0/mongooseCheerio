@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>| Mongo Scraper | </title>
+        <title>| Mongo Scraper |  {{title}}</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet"  href="slick/slick.css" type="text/html"/>
@@ -111,7 +111,7 @@
 
 {{!-- side-nav --}}
 <ul id="slide-out" class="side-nav fixed">
-  <li><a id="home">Home</a></li>
+  <li><a id="home" href="/">Home</a></li>
   <li><a id="saved-articles">Saved Articles</a></li>
   <li><div class="divider"></div></li>
   <li><a id="scrape-new">Scrape New </a></li>
@@ -169,18 +169,37 @@ $("#saved-card").on("click", function(){
 })
 
 $("#clear").on("click", function(){
-  location.reload()
+  clearArticles()
 })
 
 $("#add-note").on("click", function(){
   saveNote()
 })
 
+$("#saved-articles").on("click", function(){
+  displaySavedArticles()
+})
+
+$("#scrape-new").on("click", function(){
+  scrapeNew()
+
+})
 
 
+function clearArticles(){
+  $("#article-cards-holder").empty()
+  console.log("Cleared Articles")
+
+}
+
+function scrapeNew(){
+  console.log("Scrape new articles")
+}
 
 
-
+function displaySavedArticles(){
+  console.log("Display Saved Articles")
+}
 
 
 function saveNote(){
@@ -213,6 +232,8 @@ $(".save-article").on("click", function(){
 })
 
 }
+
+
 function savedCard(articleTitle, articlePreview){
   $("#article-cards-holder").append(`
           <div class="multiple-items">
@@ -232,13 +253,12 @@ function savedCard(articleTitle, articlePreview){
         </div>
   `)
 
-  function removeSaved(){
-    $(".multiple-items").empty()
-    console.log("removed")
+  function unsave(){
+    console.log("Unsaved")
   }
 
   $("#unsave-btn").on("click", function(){
-    removeSaved()
+    unsave()
 
   })
 }
