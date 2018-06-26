@@ -3,7 +3,8 @@ var exphbs = require("express-handlebars")
 var app = express()
 var bodyParser = require("body-parser")
 var path = require("path")
-var PORT = 3000
+var PORT = process.env.PORT || 3000
+
 
 app.use(express.static(path.join(__dirname, '/views')));
 app.engine('handlebars', exphbs({defaultLayout: 'layout'}));
