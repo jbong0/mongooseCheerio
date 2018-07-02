@@ -6,3 +6,5 @@ var articleSchema = mongoose.Schema({
 })
 
 module.exports = mongoose.model("Article", articleSchema)
+
+//article// notes activity w/ id request data based on ID 
