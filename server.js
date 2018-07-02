@@ -27,12 +27,6 @@ app.get('/', function(req, res){
     })
 })
 
-app.get('/saved', function(req, res){
-    Article.find({}).exec().then(function(data){
-        res.render('saved', {items: data})
-    })
-})
-
 app.get('/scrape', function(req, res){
     request("https://www.nytimes.com/", function(err, response, html){
         const $ = cheerio.load(html)
@@ -52,7 +46,6 @@ app.get('/scrape', function(req, res){
 
         })
         res.send(array)
-        
     })
 })
 
@@ -69,8 +62,6 @@ app.get('/clear', function(req, res){
     })
 
 })
-
-
 
 app.listen(PORT, function(){
     console.log("Server listening on https://localhost:" + PORT)
