@@ -1,68 +1,84 @@
-const express = require("express")
-const exphbs = require("express-handlebars")
+// Dependencies
+const express = require('express')
+      mongoose = require('mongoose')
+      exphbs = require('express-handlebars')
+      bodyParser = require('body-parser')
+      logger = require('morgan')
+      path = require('path')
+      cheerio = require('cheerio')
+      request = require('request')
+
+
+
+//Installize app
 const app = express()
-const bodyParser = require("body-parser")
-const path = require("path")
-const PORT = process.env.PORT || 3000
-const mongoose = require("mongoose")
-const cheerio = require('cheerio')
-const request = require("request")
-const Article = require("./models/articleModel")
 
+// Database Setup
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mongoHeadlines';
 mongoose.connect('mongodb://newuser123:newuser123@ds117701.mlab.com:17701/nyt_scraper')
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
+//Static Directory
+app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, '/views')));
-app.engine('handlebars', exphbs({defaultLayout: 'layout'}))
+
+// Handlebars
+app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars');
 
- 
-// app.get('/', function (req, res) {
-//     res.render('index')
+//Morgan Middleware
+app.use(logger('dev'))
+
+//setting up body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+// Routes
+const index = require('./routes/index')  
+      articles = require('./routes/articles')
+      notes = require('./routes/notes')
+      scrape  = require('./routes/scrape')
+
+
+app.use('/index', index)
+app.use('/articles', articles)
+app.use('/notes', notes)
+app.use('/scrape', router)
+app.use('/', router)
+
+
+
+// Server
+const PORT = process.env.PORT || 3000
+app.listen(PORT, function(){
+    console.log('Server listening on https://localhost:' + PORT)
+});
+
+
+
+
+
+
+
+
+
+// app.get('/', function(req, res){
+//     Article.find({}).exec().then(function(data){
+//         res.render('index', {items: data})
+//     })
 // })
 
-app.get('/', function(req, res){
-    Article.find({}).exec().then(function(data){
-        res.render('index', {items: data})
-    })
-})
-
-app.get('/scrape', function(req, res){
-    request("https://www.nytimes.com/", function(err, response, html){
-        const $ = cheerio.load(html)
-        let array = []
-
-        $(".story-heading").each(function(){
-            let title = $(this).children("a").text()
-            let url = $(this).children("a").attr("href")
-            let summary = $(this).siblings("p").text()
 
 
-            if (title && url && summary){
-                array.push({title: title, url: url, summary: summary})
-                let article = new Article({title: title, url: url, summary: summary})
-                article.save()
-            }
+// app.get('/all', function(req, res){
+//     Article.find({}).exec().then(function(doc){
+//         res.send(doc)
+//     })
 
-        })
-        res.send(array)
-    })
-})
+// })
 
-app.get('/all', function(req, res){
-    Article.find({}).exec().then(function(doc){
-        res.send(doc)
-    })
+// app.get('/clear', function(req, res){
+//     Article.remove({}).exec().then(function(doc){
+//         res.send(doc)
+//     })
 
-})
-
-app.get('/clear', function(req, res){
-    Article.remove({}).exec().then(function(doc){
-        res.send(doc)
-    })
-
-})
-
-app.listen(PORT, function(){
-    console.log("Server listening on https://localhost:" + PORT)
-});
+// })
