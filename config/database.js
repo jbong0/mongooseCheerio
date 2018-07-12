@@ -1,3 +1,4 @@
 module.exports = {
-  database: process.env.MONGODB_URI || 'mongodb://localhost:27017/mongoScraper'
+  // installize MongoDB
+ MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines"
 };
