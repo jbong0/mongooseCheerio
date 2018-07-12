@@ -11,10 +11,9 @@ const express = require('express'),
 //initializing the app
 const app = express();
 
-//setting up the database
-const config = require('./config/database');
+// installize MongoDB
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect('mongodb://newuser123:newuser123@ds117701.mlab.com:17701/nyt_scraper')
-
 
 //setting up favicon middleware
 app.use(favicon(path.join(__dirname, 'public', 'assets/img/favicon.ico')));
