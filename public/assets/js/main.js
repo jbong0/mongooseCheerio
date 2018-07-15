@@ -1,4 +1,7 @@
 $(document).ready(function () {
+  $('.modal').modal()
+  $('.dropdown-trigger').dropdown();
+  $('.tooltipped').tooltip();
 
   //function to post a note to server
   function sendNote(element) {

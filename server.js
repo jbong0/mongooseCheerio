@@ -5,23 +5,26 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       logger = require('morgan'),
       path = require('path'),
-      favicon = require('serve-favicon');
+      favicon = require('serve-favicon'),
+      PORT = process.env.PORT || 8080;
 
 
 //initializing the app
 const app = express();
 
-// installize MongoDB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+//setting up the database
 mongoose.connect('mongodb://newuser123:newuser123@ds117701.mlab.com:17701/nyt_scraper')
 
+
+//setting up favicon middleware
+app.use(favicon(path.join(__dirname, 'public', 'assets/img/favicon.ico')));
 
 //setting up Morgan middleware
 app.use(logger('dev'));
 
 //setting up body parser middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 //setting up handlebars middleware
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -46,8 +49,6 @@ app.use('/notes', notes);
 app.use('/scrape', scrape);
 app.use('/clear', clear);
 
-//starting server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, function () {
-  console.log(`Listening on http://localhost:${PORT}`);
+app.listen(PORT, function(){
+  console.log("Server listening on https://localhost:" + PORT)
 });

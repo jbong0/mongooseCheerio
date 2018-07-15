@@ -3,7 +3,7 @@ const express = require('express'),
       cheerio = require('cheerio'),
       rp = require('request-promise'),
       router = express.Router(),
-      db = require('../models');
+      db = require('../models')
 
 //route to scrape new articles
 router.get("/newArticles", function(req, res) {
@@ -11,7 +11,8 @@ router.get("/newArticles", function(req, res) {
   const options = {
     uri: 'https://www.nytimes.com/section/us',
     transform: function (body) {
-        return cheerio.load(body);
+        return cheerio.load(body)
+        console.log(body)
     }
   };
   //calling the database to return all saved articles

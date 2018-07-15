@@ -1,53 +1,50 @@
 
-<header class="header"></header>
+<div class="container content">
+    <div class="container" id="article-container">
+        <div class="container">
+            <div class="row container">
+                <div id="article-cards-holder"> 
+                    {{#each articles}} 
+                        {{#unless saved}}
+                            <div class="col s3">
+                                <div class="card transparent" >
+                                    <div class="card-content" id="article-card">
 
+                                        <span class="card-title">       
+                                            <div class="imgBox">
+                                                <img src="{{imgUrl}}" alt="" class="storyImg" height="150">
+                                            </div>          
+                                            <a id="save" class="btn-floating btn waves-effect waves-light green right center save-article">
+                                                <i class="material-icons"  class="storyButton" id="saveArticle" data-id="{{_id}}">
+                                                    add
+                                                </i>
+                                            </a>
+                                            <h6> {{headline}} </h6>
+                                            <h6>{{byLine}}</h6>
+                                        </span>
 
-<div class="container">
-<div class="container" id="article-container">
-<div class="container">
-<div class="row container">
-<div id="article-cards-holder"> 
-{{#each articles}} 
-{{#unless saved}}
-<div class="col s3">
-<div class="card transparent" >
-<div class="card-content" id="article-card">
-<span class="card-title">       
-<div class="imgBox">
-<img src="{{imgUrl}}" alt="" class="storyImg" height="150">
-</div>          
-<a id="save" class="btn-floating btn waves-effect waves-light green right center save-article">
-<i class="material-icons"  class="storyButton" id="saveArticle" data-id="{{_id}}">add</i>
-</a>
-<h6> {{headline}} </h6>
-<h6>{{byLine}}</h6>
-</span>
-<span class="summary">
-<p>{{summary}}</p>
-</span>
+                                        <span class="summary">
+                                            <p>{{summary}}</p>
+                                        </span>
+                                    </div>
+
+                                    <div class="card-action center">
+                                        <a class="btn card-btn" id="view-article-btn" target="_blank" href="{{storyUrl}}"> 
+                                            View Article 
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/unless}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="card-action center">
-<a class="btn" id="view-article-btn" target="_blank" href="{{storyUrl}}"> 
-View Article 
-</a>
-</div>
-</div>
-</div>
-{{/unless}}
-{{/each}}
-</div>
-</div>
-</div>
-</div>
-</div>
 
 
-
-
-
-
-
-
+  
 
 
 

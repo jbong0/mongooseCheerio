@@ -1,20 +1,18 @@
-
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css');
 
 html{
   color: black;
-  }
-  .container{
+  background-image: url("");
+  background-color: #fbf7f5;
+}
+
+.container{
   width: 100%;
-  }
-  html{
-      background-image: url("");
-      background-color: #fbf7f5;
-  }
+}
+
 :root {
   --header-height: 30em;
-
 }
 
 body {
@@ -36,11 +34,10 @@ a:hover {
 }
 
 
-
-
 /**************************** header CSS ****************************/
 
 .header {
+  margin-top: 2%;
   background-image: url('../img/nyt-header.png');
   background-color: #fbf7f5;
   background-size:60%;
@@ -48,122 +45,10 @@ a:hover {
   background-position: 20%;
   position: fixed;
   width: 100%;
-  height: var(--header-height);
+  height: 20%;
   z-index: 100;
-  border-bottom: 5px solid rgba(255,255,255,0.2);
-}
-
-
-.button-dark {
-  font-size: 2.2em;
-  padding: 0.7em 1.3em;
-  font-weight: 600;
-  border: none;
-  background: black;
-  color: #777;
-  -webkit-transition: all 300ms ease;
-  transition: all 300ms ease;
-  margin: 1em 1em 1em 0.25em;
-}
-
-
-.button-group {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-#viewSaved {
-  left: 11.5%;
-}
-
-.filler {
-  width: 100%;
-  height: var(--header-height);
-}
-
-
-
-
-/***************************** modal CSS *****************************/
-
-
-
-
-.modal-content {
-  background-image: url('../img/notepad-background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* background-attachment: fixed; */
-  background-position: center 12%;
-  border-radius: 0;
-  font-family: 'Rock Salt', cursive;
-  color: #777;
-
-}
-
-.modal-body {
-  padding-top: 0;
-  width: 80%;
-  margin: 0 auto;
-}
-
-.noteInput {
-  width: 100%;
-  height: 2em;
-  background: transparent;
-  border: none;
-  font-size: 2em;
-  border-bottom: 2px solid #777;
-}
-
-#submitNote {
-  background: transparent;
-  border: 2px solid #777;
-  font-size: 2em;
-}
-
-.instructions {
-  display: inline-block;
-  margin-right: 5em;
-}
-
-.note {
-  background: transparent;
-  margin-top: 5px;
-  height: 3em;
-  position: relative;
-  cursor: pointer;
-}
-.noteTitle {
-  display: inline-block;
-  font-size: 2.5em;
-  margin: 0;
-}
-
-.deleteNote {
-  font-size: 2.5em;
-  background: transparent;
-  color: #777;
-  border: none;
-}
-
-
-
-
-/************************ panel CSS ************************/
-
-.storyPanel {
-	background-image: url('../img/panel-background.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	color: black;
-	padding: 20px;
-	border-radius: 20px 0 20px 0;
-	border: 3px solid #ddd;
-	position: relative;
-  margin: 50px 20px;
-  opacity: 0.9;
+  border-top: 5px black double;
+  border-bottom: 5px black double;
 }
 
 .imgBox {
@@ -171,6 +56,12 @@ a:hover {
   border: 3px solid #ddd;
 }
 
+.card-btn{
+  margin-top: 20px;
+}
+.btn{
+  margin: 5%;
+}
 .imgBox:hover .storyImg{
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
@@ -184,120 +75,74 @@ a:hover {
   transition: transform 300ms ease, -webkit-transform 300ms ease;
 }
 
-.storyHeadline {
-	font-size: 3.5em;
-	font-style: italic;
-}
-
-.storyHeadline:hover {
-	color: #777;
-}
-
-.storyPanel a {
-	text-decoration: none;
-	color: #ddd;
-}
-
-.storySummary {
-	font-size: 2.5em;
-}
-
-.storyButton {
-  font-size: 2.5em;
-  padding: 5px 30px;
-  border: 3px solid #ddd;
-  background: #777;
-  font-weight: 600;
-  color: #ddd;
-  -webkit-transition: all 300ms ease;
-  transition: all 300ms ease;
-  margin-right:10px;
-  border-radius: 10px 0 10px 0;
-}
-
-.storyButton:hover {
-  color: #777;
-  background: #ddd;
-  border: 3px solid #777;
-}
-
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-
-html{
-  color: black;
-  }
-  .container{
+.container{
   width: 100%;
-  }
-  html{
-      background-image: url("");
-      background-color: #fbf7f5;
-      background-position-x: 40%;
-  }
-  a{
-      color: black;
-  }
+}
   
-  #logo, #article-container{
-      width: 90%;
-      margin-top: 20%;
-  }
-  #article-container{
-      padding-top: 2%;
-  }
-  #logo{
-      border-top: 5px black double;
-      border-bottom: 5px black double;
-      padding: 5%;
-      padding-bottom: 2%;
-  }
-  .footer{
-      border-top: 5px black double;
-      border-bottom: 5px black double;
-      margin: 5% 0 0 12% ;
-  
-  }
-  .side-nav{
-      width: 18%;
-  }
-  
-  .modal{
-      width: 500px;
-      height: 450px;
-  }
-  
-  body {
-      display: flex;
-      min-height: 100vh;
-      flex-direction: column;
-  }
-  
-  main {
-      flex: 1 0 auto;
-  }
-      
-  textarea{
-      height: 150px;
-  }
-  
-  .card-action{
+.notes-btn{
+  margin-top: 30%;
+}
+
+#article-container{
+    width: 90%;
+    margin-top: 20%;
+}
+#article-container{
+    padding-top: 2%;
+}
+#logo{
+
+    padding: 10%;
+    margin: 5%;
+    padding-bottom: 2%;
+}
+.footer{
+    border-top: 5px black double;
+    border-bottom: 5px black double;
+    margin: 5% 0 0 12% ;
+
+}
+.side-nav{
+    width: 18%;
+}
+
+.modal{
+    width: 500px;
+    height: 450px;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+    
+textarea{
+    height: 150px;
+}
+
+.card-action{
   margin-top: 10%;
-  }
-  #add-note-title{
+}
+#add-note-title{
   color: orangered;
-  }
-  
-  #article-card{
+}
+
+#article-card{
   height: 350px;
   margin: 2%;
-  }
-  
-  #view-article-btn{
+}
+
+#view-article-btn{
   margin-top: 10%;
-  
-  }
+
+}
+
+.storyByline{
+  font-size: 12px;
+  line-height: 1;
+}
